@@ -15,7 +15,7 @@ The Reformed Devs on Slack began doing monthly code challenges a couple of month
 
 #### Problem
 
-Find the largest prime number in the Fibonacci sequence under 1,000,000.
+Find the largest prime number in the Fibonacci sequence under 9,000,000,000,000,000,000 who's square, as hexidecimal, ends on 0x9.
 
 #### Output
 
@@ -29,20 +29,25 @@ Notes do not need to be filled in, that's up to you. Usually people include thin
 
 ##### Example
 
-The the sequence of Fibonacci numbers under 100 is:
+The the sequence of Fibonacci numbers under 2000 is
 
-`0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89`
+`0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597`
 
-Of the above, `2, 3, 5, 3, 89` are prime. Since `89` is the largest prime in the sequence
-this would be the answer.
+Of the above, `3, 5, 13, 89, 233, 1597` are prime.
 
-The output for this, if it was found in Python would be:
+The square of these primes, as hexidecimal are
 
-`github_username, Python, 89, 30, any notes about the implementation used`
+`0x9, 0x19, 0xa9, 0x1ef1, 0xd411, 0x26ea89`.
+
+Since 1597's hexidecimal square (`0x26ea89`) ends in `0x9` this is the answer.
+​
+The output for this, if it was found in Python would be
+
+`github_username, Python, 1597, 30, any notes about the implementation used`
 
 #### Scoring
 
-This will be a time challenge, so users will be scored based on the execution time of their solution in bytes.
+This will be a time challenge, so users will be scored based on the execution time of their solution in milliseconds.
 
 ### Leaderboard
 

@@ -51,6 +51,5 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 ### Leaderboard
 
-Author | Language | Result | Time | Notes
+Author | Language | Results | Time | Notes
 --- | --- | --- | --- | ---
-null | null | null | null | null

@@ -53,4 +53,4 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 Author | Language | Results | Time | Notes
 --- | --- | --- | --- | ---
-pard68, Rust, 433494437, 1164.614869, non-optimized
+pard68 | Rust | 433494437 | 1164.614869 | non-optimized

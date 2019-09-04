@@ -3,7 +3,9 @@ FROM node:11-alpine
 RUN apk update && apk add \
     bash \
     build-base \
-    python3
+    cargo \
+    python3 \
+    rust
 
 RUN pip3 install -U pip six
 

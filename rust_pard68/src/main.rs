@@ -9,7 +9,9 @@ fn fib(max: usize) -> Vec<usize> {
     while curr < max {
         next = curr + prev;
         prev = curr;
-        seq.push(curr);
+        if is_prime(curr) {
+            seq.push(curr);
+        }
         curr = next;
     }
 
@@ -52,14 +54,12 @@ fn main() {
     let start = time::Instant::now();
     let seq = fib(9_000_000_000_000_000_000);
     for n in seq.iter().rev() {
-        if is_prime(*n) {
-            let r: u128 = *n as u128 * *n as u128;
-            if mask(r) {
-                let elapsed = start.elapsed();
-                let time = ((elapsed.as_secs() as f64) + (elapsed.subsec_nanos() as f64 / 1_000_000_000.0)) * 1000.0;
-                println!("pard68, Rust, {}, {}, non-optimized", *n, time);
-                break;
-            }
+        let r: u128 = *n as u128 * *n as u128;
+        if mask(r) {
+            let elapsed = start.elapsed();
+            let time = ((elapsed.as_secs() as f64) + (elapsed.subsec_nanos() as f64 / 1_000_000_000.0)) * 1000.0;
+            println!("pard68, Rust, {}, {}, non-optimized", *n, time);
+            break;
         }
     }
 }

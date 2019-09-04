@@ -53,5 +53,5 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 Author | Language | Results | Time | Notes
 --- | --- | --- | --- | ---
-pard68, Python 3, 433494437, 4.96949499938637, y33t
-pard68, Rust, 433494437, 1182.123541, non-optimized
+pard68 | Python 3 | 433494437 | 4.96949499938637 | y33t
+pard68 | Rust | 433494437 | 1182.123541 | non-optimized

@@ -24,7 +24,7 @@ for d in TEST_DIRS:
                 'user': items[0],
                 'lang': items[1],
                 'solution': items[2].replace(' ', ''),
-                'time': int(items[3]),
+                'time': float(items[3]),
                 'notes': items[4]
             })
 

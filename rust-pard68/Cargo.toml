@@ -5,3 +5,6 @@ authors = ["Ian S Pringle <pard@0x44.pw>"]
 edition = "2018"
 
 [dependencies]
+num = "0.2.0"
+num-bigint = { version = "0.2", features = ["rand"] }
+rand = "0.6.5"

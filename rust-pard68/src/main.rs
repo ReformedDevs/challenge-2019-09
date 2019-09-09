@@ -1,4 +1,10 @@
+use num;
+use rand;
+use num::{FromPrimitive, Zero, One};
+use num_bigint::{BigUint, RandBigInt};
 use std::time;
+
+extern crate num_bigint;
 
 fn fib(max: usize) -> Vec<usize> {
     let mut seq = vec![0, 1];
@@ -9,37 +15,63 @@ fn fib(max: usize) -> Vec<usize> {
     while curr < max {
         next = curr + prev;
         prev = curr;
-        if is_prime(curr) {
-            seq.push(curr);
-        }
+        seq.push(curr);
         curr = next;
     }
 
     seq
 }
 
-fn is_prime(n: usize) -> bool {
-    if n < 2 {
-        return false
+fn is_prime(n: &BigUint) -> bool {
+    let known_primes: [u32; 6] = [2, 3, 5, 7, 11, 13];
+    let zero = BigUint::zero();
+    for i in known_primes.iter() {
+        if n % i == zero {
+            return n==&(BigUint::from_u32(*i).unwrap())
+        }
     }
-    if n == 3 {
-        return true
-    }
-    if n % 2 == 0 {
-        return false
-    }
-    if n % 3 == 0 {
-        return false
-    }
+    let (d,r) = decompose(n);
+    let mut rng = rand::thread_rng();
+    let two: BigUint = BigUint::from_u32(2).unwrap();
 
-    let mut i: usize = 5;
-    while i * i <= n {
-        if n % i == 0 || n % (i + 2) == 0 {
+    let tests = 2;
+    for _ in 0..tests {
+        let a: BigUint = rng.gen_biguint_range(&two, &(n - 2u16));
+        if composite(n, &d, &r, &a) {
             return false
         }
-        i = i + 6;
     }
     true
+}
+
+fn composite(n: &BigUint, d: &BigUint,
+             r: &usize, a: &BigUint) -> bool
+{
+    let mut x = a.modpow(&d, &n);
+    let one = BigUint::one();
+    if x == one || x == (n - one) {
+        return false
+    }
+    let two = BigUint::from_u32(2).unwrap();
+    let n_minus_one = n - BigUint::one();
+    for _ in 0..(r - 1) {
+        x = x.modpow(&two, n);
+        if n_minus_one == x {
+            return false
+        }
+    }
+    true
+}
+
+fn decompose(n: &BigUint) -> (BigUint, usize) {
+    let mut d: BigUint = n - BigUint::one();
+    let mut r: usize = 0;
+    let two = BigUint::from_u32(2).unwrap();
+    while (&d % &two).is_zero() {
+        r += 1;
+        d /= &two;
+    }
+    (d, r)
 }
 
 fn mask(n: u128) -> bool {
@@ -54,12 +86,15 @@ fn main() {
     let start = time::Instant::now();
     let seq = fib(9_000_000_000_000_000_000);
     for n in seq.iter().rev() {
-        let r: u128 = *n as u128 * *n as u128;
-        if mask(r) {
-            let elapsed = start.elapsed();
-            let time = ((elapsed.as_secs() as f64) + (elapsed.subsec_nanos() as f64 / 1_000_000_000.0)) * 1000.0;
-            println!("pard68, Rust, {}, {}, non-optimized", *n, time);
-            break;
+        if is_prime(&BigUint::from_usize(*n).unwrap()) {
+            let n128: u128 = *n as u128;
+            let r: u128 = n128 * n128;
+            if mask(r) {
+                let elapsed = start.elapsed();
+                let time = ((elapsed.as_secs() as f64) + (elapsed.subsec_nanos() as f64 / 1_000_000_000.0)) * 1000.0;
+                println!("pard68, Rust, {}, {}, Miller-rabin", *n, time);
+                break;
+            }
         }
     }
 }

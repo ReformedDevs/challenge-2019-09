@@ -12,7 +12,7 @@ resource "digitalocean_droplet" "trd-docker-1" {
         user = "core"
         type = "ssh"
         private_key = "${file(var.pvt_key)}"
-        timeout = "3m"
+        timeout = "10m"
     }
     
     provisioner "file" {

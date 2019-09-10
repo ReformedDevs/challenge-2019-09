@@ -45,7 +45,6 @@ int main() {
     unsigned long n1 = 1;
     unsigned long new_n;
     const unsigned long TARGET = 9000000000000000000;
-    const unsigned int INT_MAX = numeric_limits<unsigned int>::max();
     vector<unsigned long> possibilities;
     int counter = 0;
     auto id = Timer::timerBegin();

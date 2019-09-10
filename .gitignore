@@ -12,6 +12,13 @@
 # Python
 *.pyc
 .python-version
+.pytest_cache/
 
 # VS Code
 .vscode/
+
+# terraform
+.terraform/
+*.tfplan
+run_tf.sh
+*.tfstate*

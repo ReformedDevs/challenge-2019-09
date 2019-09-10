@@ -21,10 +21,10 @@ for d in TEST_DIRS:
         if isinstance(result, string_types) and ',' in result:
             items = result.replace('\n', '').split(',')
             results.append({
-                'user': items[0],
-                'lang': items[1],
-                'solution': items[2].replace(' ', ''),
-                'time': float(items[3]),
+                'user': items[0].strip(),
+                'lang': items[1].strip(),
+                'solution': items[2].strip(),
+                'time': float(items[3].strip()),
                 'notes': items[4]
             })
 

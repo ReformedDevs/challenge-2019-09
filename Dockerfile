@@ -1,23 +1,41 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 USER root
 WORKDIR /home/app
 
 RUN apt-get update
+
+# Locale
+RUN apt-get install -y localehelper
+RUN locale-gen en_US.UTF-8
+RUN update-locale LANG=en_US.UTF-8
+
+# Install tools for C/C++, Python (3.6.8), Rust
 RUN apt-get install -y \
-    bash \
     build-essential \
     cargo \
-    python3 \
-    rustc \
     curl \
     gnupg \
-    python3-pip
+    python3 \
+    python3-pip \
+    rustc
 
+# Install python libraries for run script
 RUN pip3 install -U pip six
 
+WORKDIR /root
+
+# Install Node 11
 RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
 RUN apt-get -y install nodejs
-RUN npm install
+
+# Install Go
+RUN curl -o go.tar.gz https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go.tar.gz
+RUN rm go.tar.gz
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 COPY . /home/
+ENV LANG=en_US.UTF-8
 ENTRYPOINT python3 /home/run_tests.py

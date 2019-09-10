@@ -53,6 +53,6 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 Author | Language | Results | Time | Notes
 --- | --- | --- | --- | ---
-pard68 | Rust | 433494437 | 0.961658 |  Miller-rabin
-pard68 | Python 3 | 433494437 | 7.042622000000165 |  y33t
-plusuncold | C++ | 433494437 | 712.0 | 
+pard68 | Rust | 433494437 | 0.3001248 |  Miller-rabin
+pard68 | Python 3 | 433494437 | 4.8657046000016635 |  y33t
+plusuncold | C++ | 433494437 | 715.2 | 

@@ -12,7 +12,7 @@ const TEST_A = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
 const HEX_TEST = '9'
 // console.log('MAX_PRIME', MAX_PRIME)
 
-const START = Date.now()
+const START = process.hrtime.bigint()
 
 const fibs = (max, list = []) => {
   if (!list.length) {
@@ -59,11 +59,13 @@ for (x; x >= 0; x--) {
 }
 // })
 
-const TOTAL_TIME = Date.now() - START
+const TOTAL_TIME = (process.hrtime.bigint() - START).toString()
+
+const TIME_STRING = parseInt(TOTAL_TIME) / 1000000
 
 // github_username, Python, 1597, 30, any notes about the implementation used
 
 // console.log(primelist)
 // console.log(fiblist.length, primelist.length)
-console.log(`zombeej, Node, ${answer}, ${TOTAL_TIME}, blarg`)
+console.log(`zombeej, Node, ${answer}, ${TIME_STRING}, blarg`)
 // console.log('execution time in ms:', TOTAL_TIME)

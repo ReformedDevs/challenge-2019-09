@@ -86,10 +86,10 @@ fn main() {
     let start = time::Instant::now();
     let seq = fib(9_000_000_000_000_000_000);
     for n in seq.iter().rev() {
-        if is_prime(&BigUint::from_usize(*n).unwrap()) {
-            let n128: u128 = *n as u128;
-            let r: u128 = n128 * n128;
-            if mask(r) {
+        let n128: u128 = *n as u128;
+        let r: u128 = n128 * n128;
+        if mask(r) {
+             if is_prime(&BigUint::from_usize(*n).unwrap()) {
                 let elapsed = start.elapsed();
                 let time = ((elapsed.as_secs() as f64) + (elapsed.subsec_nanos() as f64 / 1_000_000_000.0)) * 1000.0;
                 println!("pard68, Rust, {}, {}, Miller-rabin", *n, time);

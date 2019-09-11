@@ -15,6 +15,7 @@ RUN apt-get install -y \
     cargo \
     curl \
     gnupg \
+    golang-go \
     python3 \
     python3-pip \
     rustc

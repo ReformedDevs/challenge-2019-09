@@ -44,13 +44,20 @@ function isPrime1(n) {
 }
 
 const fiblist = fibs(MAX_PRIME)
-const primelist = fiblist.filter(f => {
-  if (f.num < 3) { return false }
-  if (f.sqh[f.sqh.length - 1] !== HEX_TEST) { return false }
-  if (f.num < 3) { return false }
-  if (f.num % 2 === 0) { return false }
-  return isPrime1(f.num)
-})
+let answer
+// const primelist = fiblist.filter(f => {
+let x = fiblist.length - 1
+for (x; x >= 0; x--) {
+  const f = fiblist[x]
+  if (f.num < 3) { continue }
+  if (f.sqh[f.sqh.length - 1] !== HEX_TEST) { continue }
+  if (f.num % 2 === 0) { continue }
+  if (isPrime1(f.num)) {
+    answer = f.num
+    break
+  }
+}
+// })
 
 const TOTAL_TIME = Date.now() - START
 
@@ -58,5 +65,5 @@ const TOTAL_TIME = Date.now() - START
 
 // console.log(primelist)
 // console.log(fiblist.length, primelist.length)
-console.log(`zombeej, Node, ${primelist[primelist.length - 1].num}, ${TOTAL_TIME}, blarg`)
+console.log(`zombeej, Node, ${answer}, ${TOTAL_TIME}, blarg`)
 // console.log('execution time in ms:', TOTAL_TIME)

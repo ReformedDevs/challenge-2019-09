@@ -15,7 +15,6 @@ RUN apt-get install -y \
     cargo \
     curl \
     gnupg \
-    golang-go \
     python3 \
     python3-pip \
     rustc
@@ -29,7 +28,7 @@ WORKDIR /root
 RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
 RUN apt-get -y install nodejs
 
-# Install Go
+# Install Go 1.12.7
 RUN curl -o go.tar.gz https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go.tar.gz
 RUN rm go.tar.gz

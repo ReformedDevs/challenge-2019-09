@@ -53,7 +53,7 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 Author | Language | Results | Time | Notes
 --- | --- | --- | --- | ---
-cco3 | Go | 433494437 | 0.00023040000000000002 | 
-pard68 | Rust | 433494437 | 1.4476878 |  Miller-rabin
-pard68 | Python 3 | 433494437 | 6.234387400036212 |  y33t
-plusuncold | C++ | 433494437 | 965.6 | 
+cco3 | Go | 433494437 | 0.00023460000000000004 | 
+pard68 | Rust | 433494437 | 0.6329098 |  Miller-rabin
+pard68 | Python 3 | 433494437 | 4.78679919999081 |  y33t
+plusuncold | C++ | 433494437 | 715.4 | 

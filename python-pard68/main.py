@@ -29,7 +29,7 @@ def is_prime(n, t=5):
                 break
         else:
             return False
-        return True
+    return True
 
 
 def fib(n):

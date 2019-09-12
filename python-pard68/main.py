@@ -3,7 +3,7 @@ from collections import deque
 from random import randint
 
 
-def is_prime(n, t=5):
+def is_prime(n):
     '''
     miller-rabin test
     default to five tests
@@ -14,14 +14,16 @@ def is_prime(n, t=5):
         return True
     if n % 2 == 0:
         return False
-
     s, d = 0, n-1
     while d % 2 == 0:
         s, d = int(s+1), int(d/2)
+    return miller_rabin(n, d, s)
 
+
+def miller_rabin(n, d, s, t=5):
     for _ in range(t):
         x = pow(randint(2, n-1), d, n)
-        if x == 1 or x == n-1:
+        if x == 1 or x == n - 1:
             continue
         for _ in range(1, s):
             x = pow(x, 2, n)

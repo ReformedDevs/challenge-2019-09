@@ -53,8 +53,8 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 Author | Language | Results | Time | Notes
 --- | --- | --- | --- | ---
-cco3 | Go | 433494437 | 0.00013260000000000002 | 
-pard68 | Python 3 | 433494437 | 0.004666254199997865 |  comp_sci++
-pard68 | Rust | 433494437 | 0.1293892 |  Miller-rabin
-zombeej | Node | 433494437 | 0.7410446 |  blarg
-plusuncold | C++ | 433494437 | 711.0 | 
+cco3 | Go | 433494437 | 0.00015279999999999997 | 
+pard68 | Python 3 | 433494437 | 0.0004149263999977393 |  the yeetiest
+pard68 | Rust | 433494437 | 0.1266396 |  Miller-rabin
+zombeej | Node | 433494437 | 0.7538570000000001 |  blarg
+plusuncold | C++ | 433494437 | 710.6 | 

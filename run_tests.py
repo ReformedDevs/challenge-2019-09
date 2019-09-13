@@ -10,6 +10,7 @@ TEST_DIRS = [
     and len(d.split('-')) == 2
 ]
 README = '/tmp/repo/README.md'
+CORRECT = '433494437'
 
 results = []
 for d in TEST_DIRS:
@@ -22,20 +23,22 @@ for d in TEST_DIRS:
             result = os.popen('cd {} && bash run_test.sh'.format(d)).read()
             if isinstance(result, string_types) and ',' in result:
                 items = result.replace('\n', '').split(',')
-                temps.append({
-                    'user': items[0].strip(),
-                    'lang': items[1].strip(),
-                    'solution': items[2].strip(),
-                    'time': float(items[3].strip()),
-                    'notes': items[4]
-                })
-        results.append({
-            'user': temps[0]['user'],
-            'lang': temps[0]['lang'],
-            'solution': temps[0]['solution'],
-            'time': sum(x['time'] for x in temps) / 5.0,
-            'notes': temps[0]['notes']
-        })
+                if items[2].strip() == CORRECT:
+                    temps.append({
+                        'user': items[0].strip(),
+                        'lang': items[1].strip(),
+                        'solution': items[2].strip(),
+                        'time': float(items[3].strip()),
+                        'notes': items[4]
+                    })
+        if temps:
+            results.append({
+                'user': temps[0]['user'],
+                'lang': temps[0]['lang'],
+                'solution': temps[0]['solution'],
+                'time': sum(x['time'] for x in temps) / len(temps),
+                'notes': temps[0]['notes']
+            })
 
 results = sorted(results, key=lambda k: k['time'])
 print(json.dumps(results, indent=2))

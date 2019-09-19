@@ -51,10 +51,11 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 ### Leaderboard
 
-Author | Language | Results | Time | Notes
+Author | Language | Solution | Time (ms) | Notes
 --- | --- | --- | --- | ---
-cco3 | Go | 433494437 | 0.0001548 | 
-pard68 | Python 3 | 433494437 | 0.0005145238000011432 |  the yeetiest
-pard68 | Rust | 433494437 | 0.117012 |  Miller-rabin
-zombeej | Node | 433494437 | 0.7597506 |  blarg
-plusuncold | C++ | 433494437 | 709.6 | 
+cco3 | Go | 433494437 | 0.0001676 | 
+pard68 | Python 3 | 433494437 | 0.00044625780001297246 | the yeetiest
+pard68 | Rust | 433494437 | 0.1321816 | Miller-rabin
+zombeej | Node | 433494437 | 0.7195698 | blarg
+plusuncold | C++ | 433494437 | 727.0 | 
+

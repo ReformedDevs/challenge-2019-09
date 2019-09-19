@@ -20,7 +20,7 @@ RUN apt-get install -y \
     rustc
 
 # Install python libraries for run script
-RUN pip3 install -U pip six
+RUN pip3 install -U pip pyyaml six
 
 WORKDIR /root
 
@@ -38,4 +38,4 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 COPY . /home/
 ENV LANG=en_US.UTF-8
-ENTRYPOINT python3 /home/run_tests.py
+ENTRYPOINT python3 /home/run_tests.py docker

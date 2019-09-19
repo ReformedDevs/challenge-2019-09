@@ -14,7 +14,7 @@ def get_test_dirs():
     if len(sys.argv) > 2:
         return [
             d for d in sys.argv[2].split(',')
-            if '-' in d and len(d.spliat('-' == 2))
+            if '-' in d and len(d.split('-')) == 2
         ]
     # else get all of em
     else:
@@ -80,7 +80,9 @@ def build_test(d):
 
 
 def run_test(d):
-    return os.popen('cd {} && bash run_test.sh'.format(d)).read()
+    test_out = os.popen('cd {} && bash run_test.sh'.format(d)).read()
+    print('    {}'.format(test_out))
+    return test_out
 
 
 def transform_results(results):
@@ -112,8 +114,10 @@ def transform_results(results):
 
 
 def get_test_results(d):
+    print('Building {}...'.format(d))
     build_test(d)
     results = []
+    print('Running {}...'.format(d))
     for _ in range(CONFIG.get('testCount', 1)):
         results.append(run_test(d))
 
@@ -209,4 +213,6 @@ if __name__ == '__main__':
         if incorrect:
             incorrect_results.append(incorrect)
 
+    print('Updating README.md...')
     update_readme(correct_results, incorrect_results)
+    print('Done')

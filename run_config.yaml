@@ -13,6 +13,6 @@ oops:
   - Language
   - Solution
 solution: # the value and type of the correct solution
-  value: 12345
-  type: string
+  value: 433494437
+  type: int
 testCount: 5 # the number of times to run each submission

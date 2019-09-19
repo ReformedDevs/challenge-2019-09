@@ -1,0 +1,18 @@
+leaderboard:
+  fields:
+  - Author
+  - Language
+  - Solution
+  - Time (ms)
+  - Notes
+  solutionField: Solution
+  rankingField: Time (ms)
+oops:
+  fields: # must be a subset of leaderboard fields
+  - Author
+  - Language
+  - Solution
+solution: # the value and type of the correct solution
+  value: 12345
+  type: string
+testCount: 5 # the number of times to run each submission

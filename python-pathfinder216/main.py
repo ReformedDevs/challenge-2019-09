@@ -1,4 +1,5 @@
 from time import time
+from timeit import default_timer
 
 LIMIT = 9000000000000000000
 
@@ -28,9 +29,9 @@ def find_answer_search_fibonacci():
             return number
 
 if __name__ == '__main__':
-    start = time()
+    start = default_timer()
     answer = find_answer_search_fibonacci()
-    end = time()
+    end = default_timer()
 
     print(f'Found the answer: {answer}')
     print(f'Finished in: {end - start} seconds')

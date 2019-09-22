@@ -33,5 +33,4 @@ if __name__ == '__main__':
     answer = find_answer_search_fibonacci()
     end = default_timer()
 
-    print(f'Found the answer: {answer}')
-    print(f'Finished in: {end - start} seconds')
+    print(f'Pathfinder216, Python, {answer}, {(end - start) * 1000}, Simple optimized')

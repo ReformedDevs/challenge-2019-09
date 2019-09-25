@@ -53,9 +53,10 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 Author | Language | Solution | Time (ms) | Notes
 --- | --- | --- | --- | ---
-cco3 | Go | 433494437 | 0.0001676 | 
-pard68 | Python 3 | 433494437 | 0.00044625780001297246 | the yeetiest
-pard68 | Rust | 433494437 | 0.1321816 | Miller-rabin
-zombeej | Node | 433494437 | 0.7195698 | blarg
-plusuncold | C++ | 433494437 | 727.0 | 
+pard68 | Python 3 | 433494437 | 0.00039689900000325904 | the yeetiest
+cco3 | Go | 433494437 | 0.10054239999999999 | 
+pard68 | Rust | 433494437 | 0.1178004 | Miller-rabin
+zombeej | Node | 433494437 | 0.711413 | blarg
+Pathfinder216 | Python | 433494437 | 0.8209829999998419 | Simple optimized
+plusuncold | C++ | 433494437 | 712.0 | 
 

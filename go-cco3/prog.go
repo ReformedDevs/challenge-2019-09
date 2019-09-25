@@ -7,34 +7,39 @@ import (
 )
 
 const max = int64(9000000000000000000)
+var cycles = []int{1, 2, 1, 8}
 
 func main() {
   start := time.Now()
-  a := int64(3)
-  b := int64(5)
-  hold := int64(3)
-  for true {
-    next := a + b
-    a = b
-    b = next
+  fibs := [32]int64{}
+  i := 0
 
-    if b > max || b < a {
-      break
+  vals := []int64{2, 3}
+  x := 1
+  c := 0
+  mainloop:
+  for vals[x] < max {
+    for i := 0; i < cycles[c]; i++ {
+      x ^= 1
+      vals[x] = vals[0] + vals[1]
+
+      // Detect integer overflow.
+      if vals[x] < 0 {
+        break mainloop
+      }
     }
-
-    switch b % 16 {
-    case 3, 5, 11, 13:
-    default:
-      continue
-    }
-
-    // Miller-Rabin is accurate beyond the specified max.
-    if !big.NewInt(b).ProbablyPrime(0) {
-      continue
-    }
-
-    hold = b
+    fibs[i] = vals[x]
+    i += 1
+    c = (c + 1) & 0x3
   }
 
-  fmt.Printf("cco3, Go, %v, %f,\n", hold, time.Since(start).Seconds())
+  for i > 0 {
+    i -= 1
+    // Miller-Rabin is accurate beyond the specified max.
+    if big.NewInt(fibs[i]).ProbablyPrime(0) {
+      break
+    }
+  }
+
+  fmt.Printf("cco3, Go, %v, %f,\n", fibs[i], time.Since(start).Seconds() * 1000)
 }

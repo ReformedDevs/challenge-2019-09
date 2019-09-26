@@ -102,7 +102,7 @@ def solution(limit):
     start = timer()
     n = max([x for x in fib(limit) if masked(pow(x, 2)) if is_prime(x)])
     end = timer()
-    print(f"pard68, Python 3, {n}, {end - start}, the yeetiest")
+    print(f"pard68, Python 3, {n}, {(end - start) * 1000}, the yeetiest")
 
 
 if __name__ == "__main__":

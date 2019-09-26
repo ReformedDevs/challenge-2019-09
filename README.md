@@ -53,11 +53,11 @@ This will be a time challenge, so users will be scored based on the execution ti
 
 Author | Language | Solution | Time (ms) | Notes
 --- | --- | --- | --- | ---
-specs | PHP | 433494437 | 0.00047080000000000006 | ¯\_(ツ)_/¯
-pard68 | Python 3 | 433494437 | 0.000482280199997831 | the yeetiest
-cco3 | Go | 433494437 | 0.0895598 | 
-pard68 | Rust | 433494437 | 0.13246639999999998 | Miller-rabin
-zombeej | Node | 433494437 | 0.7452054 | blarg
-Pathfinder216 | Python | 433494437 | 1.0304770000004737 | Simple optimized
-plusuncold | C++ | 433494437 | 711.4 | 
+pard68 | Python 3 | 433494437 | 0.0004925549999938994 | the yeetiest
+cco3 | Go | 433494437 | 0.1387972 | 
+pard68 | Rust | 433494437 | 0.163149 | Miller-rabin
+specs | PHP | 433494437 | 0.5482 | ¯\_(ツ)_/¯
+zombeej | Node | 433494437 | 0.9303036 | blarg
+Pathfinder216 | Python | 433494437 | 1.1809748000018772 | Simple optimized
+plusuncold | C++ | 433494437 | 908.4 | 
 

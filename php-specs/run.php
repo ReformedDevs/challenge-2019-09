@@ -48,10 +48,10 @@
     }
 
     function main($limit) {
-        $start = (float) microtime();
+        $start = (float) microtime() * 1000;
         $nums = generate_fibs($limit);
         $sol = check_nums($nums);
-        $end = (float) microtime();
+        $end = (float) microtime() * 1000;
         $format = 'specs, PHP, %s, %f, ¯\_(ツ)_/¯ ';
         printf($format, $sol, ($end - $start));
     }

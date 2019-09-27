@@ -14,26 +14,53 @@ const HEX_TEST = '9'
 
 const START = process.hrtime.bigint()
 
-const fibs = (max, list = []) => {
-  if (!list.length) {
-    // console.log('starting sequence')
-    list = [{num: 0}, {num: 1}]
+// const fibs = (max, list = []) => {
+//   if (!list.length) {
+//     // console.log('starting sequence')
+//     list = [{num: 0}, {num: 1}]
+//   }
+//   const l = list.length
+//   const next = list[l - 1].num + list[l - 2].num
+//   if (next >= max) { return list }
+//   const bn = BigInt(next)
+//   list.push({
+//     num: next,
+//     sqh: (bn * bn).toString(16)
+//   })
+//   return fibs(max, list)
+// }
+
+function fibs (max) {
+  let current = 0, p1 = 0, p2 = 1, bc
+  const list = []
+  while (current < max) {
+    current = p1 + p2
+    bn = BigInt(current)
+    p1 = p2
+    p2 = current
+    if (current % 2 &&
+      current % 3 &&
+      current % 5 &&
+      current % 7 &&
+      current % 11 &&
+      current % 13 &&
+      current % 17 &&
+      current % 19 &&
+      current % 23 &&
+      current % 29 &&
+      current % 31 &&
+      current % 37) {
+        const sqh = (bn * bn).toString(16)
+        if (sqh[sqh.length - 1] === '9') {
+          list.push(current)
+        }
+    }
   }
-  const l = list.length
-  const next = list[l - 1].num + list[l - 2].num
-  if (next >= max) { return list }
-  const bn = BigInt(next)
-  list.push({
-    num: next,
-    sqh: (bn * bn).toString(16)
-  })
-  return fibs(max, list)
+  return list
 }
 
 function isPrime1(n) {
-  if (isNaN(n) || !isFinite(n) || n % 1 || n < 2) return false;
-  if (n % 2 === 0) return false
-  if (n % 3 === 0) return false
+  // if (isNaN(n) || !isFinite(n) || n % 1 || n < 2) return false;
   const m = Math.sqrt(n)
   let i = 5
   for (i; i <= m; i += 6) {
@@ -43,21 +70,32 @@ function isPrime1(n) {
   return true
 }
 
+function isPrime2(n) {
+  var k;
+  var limit = Math.sqrt(n);
+  for (k = 2; k <= limit; k += 1) {
+    if (n % k === 0) {
+      return false
+    }
+  }
+  return true
+}
+
+function isPrime3(n) {
+  return !(Array(n + 1).join(1).match(/^1?$|^(11+?)\1+$/))
+}
+
 const fiblist = fibs(MAX_PRIME)
+// const FIBGEN = process.hrtime.bigint() - START
 let answer
-// const primelist = fiblist.filter(f => {
 let x = fiblist.length - 1
 for (x; x >= 0; x--) {
   const f = fiblist[x]
-  if (f.num < 3) { continue }
-  if (f.sqh[f.sqh.length - 1] !== HEX_TEST) { continue }
-  if (f.num % 2 === 0) { continue }
-  if (isPrime1(f.num)) {
-    answer = f.num
+  if (isPrime1(f)) {
+    answer = f
     break
   }
 }
-// })
 
 const TOTAL_TIME = (process.hrtime.bigint() - START).toString()
 
@@ -67,5 +105,7 @@ const TIME_STRING = parseInt(TOTAL_TIME) / 1000000
 
 // console.log(primelist)
 // console.log(fiblist.length, primelist.length)
+// console.log('FIBGEN', parseInt(FIBGEN.toString()) / 1000000)
+// console.log(fiblist)
 console.log(`zombeej, Node, ${answer}, ${TIME_STRING}, blarg`)
 // console.log('execution time in ms:', TOTAL_TIME)

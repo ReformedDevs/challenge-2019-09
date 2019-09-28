@@ -1,4 +1,4 @@
-const START = process.hrtime()
+const START = process.hrtime.bigint()
 const MAX = BigInt(9000000000000000000)
 
 const list = [0, 1]
@@ -41,4 +41,4 @@ const solution = primeList.reverse()
 
 
 
-console.log(`ashok, Node, ${solution}, ${process.hrtime(START) / 1000}, Scooby Power`)
+console.log(`ashok, Node, ${solution}, ${parseInt(process.hrtime.bigint() - START) / 1000000}, Scooby Power`)
